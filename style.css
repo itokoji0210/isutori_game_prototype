@@ -1,0 +1,183 @@
+:root {
+  color-scheme: dark;
+  --ink: #f7f7fb;
+  --muted: #aeb5c2;
+  --panel: #15181d;
+  --line: #2b3038;
+  --accent: #ffd24a;
+  --danger: #ff5d5d;
+  --go: #4de2a0;
+  --rail: #29313b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  background:
+    linear-gradient(180deg, rgba(255, 210, 74, 0.1), transparent 34%),
+    repeating-linear-gradient(90deg, #0d1014 0 74px, #11151a 74px 148px);
+}
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.game-wrap {
+  width: min(100%, 1050px);
+}
+
+.topbar,
+.meter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.kicker {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 52px);
+  line-height: 1;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.stats span,
+.meter-label {
+  min-width: 92px;
+  border: 1px solid var(--line);
+  background: rgba(21, 24, 29, 0.82);
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stats strong {
+  display: block;
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 18px 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #101318;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+.controls {
+  display: none;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+button {
+  min-height: 44px;
+  border: 1px solid #363d47;
+  border-radius: 8px;
+  background: #20262f;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+button:hover {
+  border-color: var(--accent);
+  background: #2a3039;
+}
+
+button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+#sitBtn,
+#startBtn {
+  background: var(--accent);
+  border-color: #f4c73d;
+  color: #181200;
+}
+
+.meter-row {
+  align-items: stretch;
+}
+
+.meter {
+  flex: 1;
+  min-height: 44px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0d1116;
+}
+
+.meter span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--go), var(--accent), var(--danger));
+  transition: width 180ms ease;
+}
+
+#startBtn {
+  min-width: 130px;
+}
+
+@media (max-width: 720px) {
+  .shell {
+    padding: 14px;
+  }
+
+  .topbar,
+  .meter-row {
+    display: grid;
+  }
+
+  .stats {
+    justify-content: stretch;
+  }
+
+  .stats span {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .controls {
+    display: grid;
+  }
+
+  #startBtn {
+    width: 100%;
+  }
+}
